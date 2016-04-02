@@ -7,6 +7,6 @@ void Sudoku::giveQuestion()
 	for(i=0;i<size;++i)
 		map[i]=question[i];
 	transform();
-	for(i=0;i<size;++i)
-		printf("%d%c",map[i],(i+1)%9==0?'\n':' ');
+//	for(i=0;i<size;++i)
+//		printf("%d%c",map[i],(i+1)%9==0?'\n':' ');
 }
