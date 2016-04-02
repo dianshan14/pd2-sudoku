@@ -1,8 +1,5 @@
-out: main.o Sudoku.o giveQuestion.o transform.o solve.o
-	g++ -o out main.o Sudoku.o solve.o transform.o giveQuestion.o
-
-main.o: main.cpp Sudoku.h
-	g++ -c main.cpp
+out: Sudoku.o giveQuestion.o transform.o solve.o
+	g++ -o out Sudoku.o solve.o transform.o giveQuestion.o
 
 Sudoku.o: Sudoku.cpp Sudoku.h
 	g++ -c Sudoku.cpp
