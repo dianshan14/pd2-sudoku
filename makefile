@@ -1,5 +1,5 @@
-out: Sudoku.o giveQuestion.o transform.o solve.o
-	g++ -o out Sudoku.o solve.o transform.o giveQuestion.o
+out: Sudoku.o giveQuestion.o transform.o solve.o main.o
+	g++ -o out main.o Sudoku.o solve.o transform.o giveQuestion.o
 
 Sudoku.o: Sudoku.cpp Sudoku.h
 	g++ -c Sudoku.cpp
@@ -12,6 +12,9 @@ solve.o: solve.cpp Sudoku.h
 
 giveQusetion.o: giveQuestion.cpp Sudoku.h
 	g++ -c giveQuestion.cpp
+
+main.o: main.cpp Sudoku.h
+	g++ -c main.cpp
 
 clean:
 	rm out *.o
