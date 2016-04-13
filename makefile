@@ -1,20 +1,23 @@
-out: Sudoku.o giveQuestion.o transform.o solve.o main.o
-	g++ -o out main.o Sudoku.o solve.o transform.o giveQuestion.o
+Sudoku: Sudoku.h Sudoku.o main.o transform solve giveQuestion
+	g++ -o Sudoku Sudoku.o main.o
 
-Sudoku.o: Sudoku.cpp Sudoku.h
+Sudoku.o: Sudoku.h Sudoku.cpp
 	g++ -c Sudoku.cpp
-
-transform.o: transform.cpp Sudoku.h
-	g++ -c transform.cpp
-
-solve.o: solve.cpp Sudoku.h
-	g++ -c solve.cpp
-
-giveQusetion.o: giveQuestion.cpp Sudoku.h
-	g++ -c giveQuestion.cpp
 
 main.o: main.cpp Sudoku.h
 	g++ -c main.cpp
 
+giveQuestion: giveQuestion.cpp Sudoku.h Sudoku.o
+	g++ -c giveQuestion.cpp
+	g++ -o giveQuestion giveQuestion.o Sudoku.o
+
+solve: solve.cpp Sudoku.h Sudoku.o
+	g++ -c solve.cpp
+	g++ -o solve solve.o Sudoku.o
+
+transform: transform.cpp Sudoku.h Sudoku.o
+	g++ -c transform.cpp
+	g++ -o transform transform.o Sudoku.o
+
 clean:
-	rm out *.o
+	rm  *.o
